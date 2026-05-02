@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/1227113132.svg)](https://doi.org/10.5281/zenodo.19973665)
 # SheetMemory
 
 A structured, typed memory plugin for OpenClaw — deterministic retrieval, Perceptor pre-processing, and local-model classification. No embedding dependency. No GPU required.
