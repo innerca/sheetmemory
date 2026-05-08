@@ -1,0 +1,40 @@
+SheetMemory
+
+SheetMemory is a local-first structured memory plugin for OpenClaw.
+
+Short description:
+- Captures durable facts, rules, preferences, plans, and corrections as typed records.
+- Uses deterministic retrieval with field filters instead of vector similarity.
+- Uses a rule-based Perceptor before any optional LLM classification.
+- Stores records in SQLite with time-based decay and archival.
+
+What it is:
+- A structured memory layer for OpenClaw.
+- A rule-first ingestion pipeline for agent memory.
+- A local-first alternative to embedding-heavy memory stacks.
+
+What it is not:
+- Not a vector database.
+- Not an embedding-based semantic retrieval system.
+- Not a cloud memory service.
+
+Primary value:
+- Deterministic retrieval for rules, facts, and preferences.
+- Auditable stored memory records.
+- Local deployment without GPU requirements.
+- Better handling of high-signal user constraints than tool-call-only memory.
+
+Key concepts:
+- Perceptor
+- Structured memory protocol
+- Deterministic retrieval
+- SQLite storage
+- Weibull decay
+- Optional local-model classification
+
+Recommended pages:
+- README.md
+- PROTOCOL.md
+
+Suggested summary:
+SheetMemory is a local-first OpenClaw memory plugin that captures structured records through rule-first ingestion and retrieves them deterministically without embeddings.

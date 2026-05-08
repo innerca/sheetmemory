@@ -1,10 +1,10 @@
 {
   "name": "sheetmemory",
   "version": "0.1.0",
-  "description": "Structured typed memory plugin for OpenClaw — Perceptor pre-processing, deterministic field-filter retrieval, local-model classification",
+  "description": "Local-first structured memory plugin for OpenClaw with deterministic retrieval, Perceptor ingestion, and optional local-model classification",
   "type": "module",
   "license": "MIT",
-  "keywords": ["openclaw", "memory", "structured-memory", "perceptor", "plugin"],
+  "keywords": ["openclaw", "memory", "structured-memory", "sheetmemory", "deterministic-retrieval", "sqlite", "plugin"],
   "repository": {
     "type": "git",
     "url": "https://github.com/innerca/sheetmemory"

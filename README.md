@@ -1,13 +1,36 @@
 [![DOI](https://zenodo.org/badge/1227113132.svg)](https://doi.org/10.5281/zenodo.19973665)
 # SheetMemory
 
-A structured, typed memory plugin for OpenClaw — deterministic retrieval, Perceptor pre-processing, and local-model classification. No embedding dependency. No GPU required.
+A local-first structured memory plugin for OpenClaw. SheetMemory captures durable facts, rules, preferences, plans, and corrections as typed records with deterministic retrieval. No embeddings. No vector database. No GPU required.
+
+## In one sentence
+
+SheetMemory turns agent memory from "remember to call a tool" into a typed, auditable pipeline: detect signal, classify only when needed, store locally, retrieve deterministically.
+
+## At a glance
+
+- **For OpenClaw users who do not trust fuzzy memory alone.**
+- **Deterministic retrieval:** filter by fields and status, not vector similarity.
+- **Local-first:** SQLite storage and optional local-model classification.
+- **Rule-first ingestion:** a Perceptor catches high-signal messages before any LLM call.
+- **Auditable:** memory records are typed, inspectable, and stable across runs.
 
 ## The problem
 
 OpenClaw's native memory relies on the agent remembering to call memory tools. When context compacts or sessions reset, the agent forgets what it knew — and what it was supposed to remember. The result is silent context loss, stale recall, and no audit trail.
 
 SheetMemory moves memory from agent-driven tool calls to **system-driven pipeline**: every user message passes through a rule-based Perceptor, high-signal content is classified by a local LLM, and retrieval uses deterministic field filters — not vector similarity.
+
+## Why it is different
+
+Most memory systems optimize for semantic similarity at retrieval time. SheetMemory focuses on the **input side** first:
+
+1. Detect whether a message should become memory.
+2. Type it into a stable schema.
+3. Store it locally with explicit fields.
+4. Retrieve it with deterministic filters and decay-aware ranking.
+
+That makes it better suited for things agents repeatedly mishandle: user rules, durable preferences, commitments, corrections, and other facts that should not disappear behind fuzzy recall.
 
 ## Architecture
 
@@ -40,7 +63,7 @@ openclaw plugins install clawhub:sheetmemory
 Or from source during development:
 
 ```bash
-openclaw plugins install ./extensions/structured-memory --link
+openclaw plugins install . --link
 ```
 
 ## Configuration
@@ -149,7 +172,7 @@ Yes. Set `classification.model` to any provider/model OpenClaw supports.
 
 ## Protocol
 
-SheetMemory implements the [SheetMemory Structured Memory Protocol v1.1](../../PROTOCOL.md). Contributions should target protocol compliance first, feature additions second.
+SheetMemory implements the [SheetMemory Structured Memory Protocol v1.1](PROTOCOL.md). Contributions should target protocol compliance first, feature additions second.
 
 ## Maintenance
 
