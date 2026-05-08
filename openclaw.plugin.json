@@ -7,7 +7,7 @@
     "tools": ["memory_record_add", "memory_record_find", "memory_record_archive"]
   },
   "name": "SheetMemory",
-  "description": "Local-first structured memory for OpenClaw with deterministic retrieval, Perceptor ingestion, and time-based decay.",
+  "description": "Upstream memory intake for OpenClaw with rule-first structured writes, deterministic retrieval, and time-based decay.",
   "configSchema": {
     "type": "object",
     "additionalProperties": false,

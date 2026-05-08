@@ -1,7 +1,7 @@
 {
   "name": "sheetmemory",
   "version": "0.1.0",
-  "description": "Local-first structured memory plugin for OpenClaw with deterministic retrieval, Perceptor ingestion, and optional local-model classification",
+  "description": "Upstream memory intake layer for OpenClaw with rule-first structured writes, deterministic retrieval, and optional local-model classification",
   "type": "module",
   "license": "MIT",
   "keywords": ["openclaw", "memory", "structured-memory", "sheetmemory", "deterministic-retrieval", "sqlite", "plugin"],

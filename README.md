@@ -1,15 +1,16 @@
 [![DOI](https://zenodo.org/badge/1227113132.svg)](https://doi.org/10.5281/zenodo.19973665)
 # SheetMemory
 
-A local-first structured memory plugin for OpenClaw. SheetMemory captures durable facts, rules, preferences, plans, and corrections as typed records with deterministic retrieval. No embeddings. No vector database. No GPU required.
+An upstream memory intake layer for OpenClaw. SheetMemory decides what deserves to enter memory, writes high-signal items as typed records, and keeps retrieval deterministic. No embeddings. No vector database. No GPU required.
 
 ## In one sentence
 
-SheetMemory turns agent memory from "remember to call a tool" into a typed, auditable pipeline: detect signal, classify only when needed, store locally, retrieve deterministically.
+SheetMemory turns agent memory from "remember to call a tool" into a rule-first admission pipeline: detect signal, decide what should enter memory, write structured records, and retrieve them deterministically.
 
 ## At a glance
 
 - **For OpenClaw users who do not trust fuzzy memory alone.**
+- **Upstream memory intake:** decide what enters memory before downstream recall begins.
 - **Deterministic retrieval:** filter by fields and status, not vector similarity.
 - **Local-first:** SQLite storage and optional local-model classification.
 - **Rule-first ingestion:** a Perceptor catches high-signal messages before any LLM call.
@@ -19,11 +20,11 @@ SheetMemory turns agent memory from "remember to call a tool" into a typed, audi
 
 OpenClaw's native memory relies on the agent remembering to call memory tools. When context compacts or sessions reset, the agent forgets what it knew — and what it was supposed to remember. The result is silent context loss, stale recall, and no audit trail.
 
-SheetMemory moves memory from agent-driven tool calls to **system-driven pipeline**: every user message passes through a rule-based Perceptor, high-signal content is classified by a local LLM, and retrieval uses deterministic field filters — not vector similarity.
+SheetMemory moves memory from agent-driven tool calls to **system-driven intake**: every user message passes through a rule-based Perceptor, high-signal content is classified only when needed, and durable memory enters storage as typed records instead of fuzzy recall leftovers.
 
 ## Why it is different
 
-Most memory systems optimize for semantic similarity at retrieval time. SheetMemory focuses on the **input side** first:
+Most memory systems optimize for semantic similarity at retrieval time. SheetMemory focuses on the **admission step** first:
 
 1. Detect whether a message should become memory.
 2. Type it into a stable schema.
@@ -31,6 +32,13 @@ Most memory systems optimize for semantic similarity at retrieval time. SheetMem
 4. Retrieve it with deterministic filters and decay-aware ranking.
 
 That makes it better suited for things agents repeatedly mishandle: user rules, durable preferences, commitments, corrections, and other facts that should not disappear behind fuzzy recall.
+
+In short:
+
+- **SheetMemory** works upstream: memory intake, admission control, structured writes.
+- **Vector-first memory systems** work downstream: semantic recall after memory has already been captured.
+
+SheetMemory does not try to out-compete downstream retrieval systems on similarity search. It gives them better input.
 
 ## Architecture
 
